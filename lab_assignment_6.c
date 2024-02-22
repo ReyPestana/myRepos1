@@ -2,6 +2,17 @@
 
 int search(int numbers[], int low, int high, int value) 
 {
+	if (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (numbers[mid] == value) {
+            return mid; // Element found
+        } else if (numbers[mid] < value) {
+            return search(numbers, mid + 1, high, value); // Search in the right half
+        } else {
+            return search(numbers, low, mid - 1, value); // Search in the left half
+        }
+    }
 	return -1;
 }
 
